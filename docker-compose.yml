@@ -1,0 +1,27 @@
+version: "3.3"
+services:
+  postgres:
+    image: postgres:13.3
+    environment:
+      POSTGRES_DB: "Files"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "vany2003"
+    ports:
+      - "5432:5432"
+    restart: always
+    volumes:
+      - /etc/localtime:/etc/localtime
+  grpcserver:
+    image: ivankozlov03/test_grpcserver
+    ports:
+      - "4545:4545"
+    restart: always
+    volumes:
+      - /etc/localtime:/etc/localtime
+  grpcclient:
+    image: ivankozlov03/test_grpcclient
+    ports:
+      - "8083:8083"
+    restart: always
+    volumes:
+      - /etc/localtime:/etc/localtime
